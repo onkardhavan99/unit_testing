@@ -1,23 +1,32 @@
-def setup_function(function):
-    if function == test1:
-        print("\nSetting up test1.")
-    elif function == test2:
-        print("\nSetting up test2.")
-    else:
-        print("\nSetting up unknown test.")
+class TestClass:
+    @classmethod
+    def setup_class(cls):
+        print("Setup class.")
 
-def teardown_function(function):
-    if function == test1:
-        print("\nTearing down test1.")
-    elif function == test2:
-        print("\nTearing down test2.")
-    else:
-        print("\nTearing down unknown test.")
+    @classmethod
+    def teardown_class(cls):
+        print("Teardown class.")
 
-def test1():
-    print("Execution test1.")
-    assert True
+    def setup_method(self, function):
+        if function == self.test1:
+            print("\nSetting up test1.")
+        elif function == self.test2:
+            print("\nSetting up test2.")
+        else:
+            print("\nSetting up unknown test.")
 
-def test2():
-    print("Execution test2.")
-    assert True
+    def teardown_method(self, function):
+        if function == self.test1:
+            print("\nTearing down test1.")
+        elif function == self.test2:
+            print("\nTearing down test2.")
+        else:
+            print("\nTearing down unknown test.")
+
+    def test1(self):
+        print("Execution test1.")
+        assert True
+
+    def test2(self):
+        print("Execution test2.")
+        assert True
